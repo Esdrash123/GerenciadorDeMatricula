@@ -1,0 +1,5 @@
+ifpe\edu\br\repositorios\RepositorioAluno.class
+ifpe\edu\br\entidades\Aluno.class
+ifpe\edu\br\repositorios\RepositorioAdmin.class
+ifpe\edu\br\entidades\Admin.class
+ifpe\edu\br\repositorios\RepositorioGenerico.class
