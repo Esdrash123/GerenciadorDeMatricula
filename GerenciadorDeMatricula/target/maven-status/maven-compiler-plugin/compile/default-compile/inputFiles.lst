@@ -1,5 +1,9 @@
-C:\Users\esdra\Desktop\ArquiteturaDeSoftware\GerenciadorDeMatricula\src\main\java\ifpe\edu\br\repositorios\RepositorioAluno.java
-C:\Users\esdra\Desktop\ArquiteturaDeSoftware\GerenciadorDeMatricula\src\main\java\ifpe\edu\br\entidades\Admin.java
-C:\Users\esdra\Desktop\ArquiteturaDeSoftware\GerenciadorDeMatricula\src\main\java\ifpe\edu\br\repositorios\RepositorioGenerico.java
-C:\Users\esdra\Desktop\ArquiteturaDeSoftware\GerenciadorDeMatricula\src\main\java\ifpe\edu\br\entidades\Aluno.java
-C:\Users\esdra\Desktop\ArquiteturaDeSoftware\GerenciadorDeMatricula\src\main\java\ifpe\edu\br\repositorios\RepositorioAdmin.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\garanhuns\ifpe\entidades\Aluno.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\garanhuns\ifpe\model\dao\ManagerDao.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\garanhuns\ifpe\repositorio\implementacao\RepositorioAdminImplDB.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\garanhuns\ifpe\repositorio\implementacao\RepositorioAluno.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\ifpe\repositorio\comportamentos\RepositorioGenerico.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\ifpe\DAO\DaoManagerHiber.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\garanhuns\ifpe\entidades\Admin.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\garanhuns\ifpe\controladores\AdminController.java
+C:\Users\esdra\Downloads\GerenciadorDeMatricula\src\main\java\br\edu\garanhuns\ifpe\builders\BuilderAdmin.java

@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        
+        <h:form id="formularioCadastroAdmin">
+            <p:messages/>
+            <p:panelGrid columns="3">
+                <h:outputText value="Nome:"/>
+                <p:inputText id="txtNome" value="#{builderAdmin.nome}" required="true"
+                             requiredMessage="O nome é obrigatório"/>
+                <p:message for="txtNome"/>
+                
+                <h:outputText value="Codigo:"/>
+                <p:inputText id="txtLogin" value="#{builderAdmin.codigo}" required="true"
+                             requiredMessage="O Codigo é obrigatório"/>
+                <p:message for="txtCodigo"/>
+                
+                <h:outputText value="Senha:"/>
+                <p:password id="txtSenha" value="#{builderAdmin.senha}" required="true"
+                             requiredMessage="A senha é obrigatório"/>
+                <p:message for="txtSenha"/>
+                
+                <h:outputText value="Confirmação:"/>
+                <p:password id="txtConfirm" value="#{confirmacao}" required="true"
+                             requiredMessage="confirme a senha"/>
+                <p:message for="txtConfirm"/>
+                
+            </p:panelGrid>
+            
+            <p:commandButton value="cadastrar" update=":formularioCadastroAdmin" action="#{adminController.insert(builderAdmin.criarAdmin(),confirmacao)}"/>
+        </h:form>
+    </h:body>
+    
+    </html>
+
