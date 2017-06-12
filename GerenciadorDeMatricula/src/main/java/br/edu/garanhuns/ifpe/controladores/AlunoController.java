@@ -1,11 +1,11 @@
- /*
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package br.edu.garanhuns.ifpe.controladores;
 
-import br.edu.garanhuns.ifpe.entidades.Admin;
+import br.edu.garanhuns.ifpe.entidades.Aluno;
 import br.edu.garanhuns.ifpe.model.dao.ManagerDao;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -15,31 +15,26 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-/**
- *
- * @author 1860915
- */
-
 @ManagedBean(name="cAdmin")
 @SessionScoped
-public class AdminController {
+public class AlunoController {
     
-    private Admin adminLogado;
+    private Aluno adminLogado;
 
-    public Admin getAdminLogado() {
+    public Aluno getAdminLogado() {
         return adminLogado;
     }
 
-    public void setAdminLogado(Admin adminLogado) {
+    public void setAdminLogado(Aluno adminLogado) {
         this.adminLogado = adminLogado;
     }
     
-    public String insert(Admin u, String confirmacao) throws NoSuchAlgorithmException{
+    public String insert(Aluno u, String confirmacao) throws NoSuchAlgorithmException{
         
-        String s = u.getSenha();
+        String s = u.getCodigo();
         
         if(!s.equals(confirmacao)){
-            FacesContext.getCurrentInstance().addMessage("formularioCadastroAdmin:txtConfirm",
+            FacesContext.getCurrentInstance().addMessage("formularioCadastroAluno:txtConfirm",
                     new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "A senha e a confirmação não batem"));
             return null;
         }
@@ -110,7 +105,5 @@ public class AdminController {
         
         this.adminLogado = u;
     }
-    
-    
     
 }

@@ -3,44 +3,27 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package br.edu.garanhuns.ifpe.entidades;
+package br.edu.garanhuns.ifpe.builders;
 
-import javax.faces.bean.ManagedBean;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import br.edu.garanhuns.ifpe.entidades.Aluno;
 
-/**
- *
- * @author esdra
- */
 
-@Entity
-@Table
-public class Aluno {
+public class BuilderAluno {
     
-    @Id
-    @GeneratedValue
     private int id;
-    @Column(length = 30, nullable = false)
     private String nome;
-    @Column(length = 2)
     private String idade;
-    @Column(length = 9)
     private long cpf;
-    @Column(length = 6, nullable = false)
     private String codigo;
 
-    public Aluno(int id, String nome, String idade, long cpf, String codigo) {
-        this.id = id;
-        this.nome = nome;
-        this.idade = idade;
-        this.cpf = cpf;
-        this.codigo = codigo;
+    public int getId() {
+        return id;
     }
-    
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public String getNome() {
         return nome;
     }
@@ -65,14 +48,6 @@ public class Aluno {
         this.cpf = cpf;
     }
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getCodigo() {
         return codigo;
     }
@@ -80,5 +55,9 @@ public class Aluno {
     public void setCodigo(String codigo) {
         this.codigo = codigo;
     }
-
+    
+    public Aluno criarAluno (){
+        return new Aluno(id, nome, idade, cpf, codigo);
+    }
+    
 }
