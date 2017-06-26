@@ -15,95 +15,29 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
 
-@ManagedBean(name="cAdmin")
+@ManagedBean(name="cAluno")
 @SessionScoped
 public class AlunoController {
-    
-    private Aluno adminLogado;
-
-    public Aluno getAdminLogado() {
-        return adminLogado;
-    }
-
-    public void setAdminLogado(Aluno adminLogado) {
-        this.adminLogado = adminLogado;
+    public void insert (Aluno a){
+        ManagerDao.getCurrentInstance().insert(a);
+        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O aluno foi cadastrado"));
     }
     
-    public String insert(Aluno u, String confirmacao) throws NoSuchAlgorithmException{
-        
-        String s = u.getCodigo();
-        
-        if(!s.equals(confirmacao)){
-            FacesContext.getCurrentInstance().addMessage("formularioCadastroAluno:txtConfirm",
-                    new FacesMessage(FacesMessage.SEVERITY_ERROR, "Erro", "A senha e a confirmação não batem"));
-            return null;
-        }
-        
-         MessageDigest m=MessageDigest.getInstance("MD5");
-       m.update(s.getBytes(),0,s.length());
-       u.setSenha(""+new BigInteger(1,m.digest()).toString(16).substring(0,18));
-        ManagerDao.getCurrentInstance().insert(u);
-        
-        FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O administrador foi cadastrado"));
-        
-        return "login.xhtml";
-        
+    public void update(Aluno a){
+        ManagerDao.getCurrentInstance().update(a);
     }
     
-    public void update(Admin u){
-        ManagerDao.getCurrentInstance().update(u);
-        
-        reloadUsuarioLogado();
+    public void deletar(Aluno a){
+        ManagerDao.getCurrentInstance().delete(a);
     }
     
-    public Admin read(int codigo){
+    public Aluno read(int codigo){
         try{
-        return (Admin)ManagerDao.getCurrentInstance().
-                read("select u from Admin u where u.id="+codigo, Admin.class).get(0);
+            return (Aluno) ManagerDao.getCurrentInstance()
+                    .read("select a from Aluno a where a.id="+codigo, Aluno.class).get(0);
         }catch(ArrayIndexOutOfBoundsException arr){
             return null;
         }
-    }
-    
-    public void deletar(Admin u){
-        ManagerDao.getCurrentInstance().delete(u);
-        reloadUsuarioLogado();
-    }
-    
-    public String realizarLogin(String login, String senha) throws NoSuchAlgorithmException{
-        MessageDigest m=MessageDigest.getInstance("MD5");
-       m.update(senha.getBytes(),0,senha.length());
-       senha=(""+new BigInteger(1,m.digest()).toString(16).substring(0,18));
-       
-       try{
-        Admin u = (Admin)ManagerDao.getCurrentInstance().read("select u from Admin u where "
-               + "u.login='"+login+"' and u.senha='"+senha+"'", Admin.class).get(0);
-        
-        this.adminLogado = u;
-        
-           //((HttpSession)FacesContext.getCurrentInstance().getExternalContext().getSession(true)).setAttribute("usuarioLogado", u);
-        
-       }catch(ArrayIndexOutOfBoundsException arr){
-           FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("O login e/ou a senha está(ão) incorreto(s)"));
-           return null;
-       }
-       return "paginaPrincipalAdmin.xhtml";
-    }
-    
-    public String logOut(){
-        this.adminLogado = null;
-        
-        return "login.xhtml";
-    }
-    
-   
-    
-    private void reloadUsuarioLogado(){
-        Admin u = (Admin)ManagerDao.getCurrentInstance().read("select u from Admin u where "
-               + "u.login='"+this.adminLogado.getCodigo()+"' and u.senha='"+this.adminLogado.getSenha()
-                +"'", Admin.class).get(0);
-        
-        this.adminLogado = u;
     }
     
 }
