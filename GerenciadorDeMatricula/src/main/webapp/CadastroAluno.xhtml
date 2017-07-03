@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"    
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Cadastro Aluno</title><br/>
+    </h:head>
+    <h:body>
+        <br></br>
+        <ui:include src='index.xhtml'/>
+        <p:messages/>
+        <h:form id="CadastroAlunoform">
+            <p:fieldset legend="Cadastro de Administrador" style="width: 50%">
+                <p:panelGrid columns="3">
+
+                    <h:outputText value="Nome"/>
+                    <p:inputText id="txtNome" value="#{builderAluno.nome}" required="true"
+                                 requiredMessage="O nome é obrigatório"/>
+                    <p:message for="txtNome"/>
+
+
+                    <h:outputText value="Idade"/>
+                    <p:inputText id="txtIdade" value="#{builderAluno.idade}" required="true"
+                                 requiredMessage="A idade é obrigatória"/>
+                    <p:message for="txtIdade"/>
+
+                    <h:outputText value="Cpf"/>
+                    <p:password id="txtCpf" value="#{builderAluno.cpf}" required="true"
+                                requiredMessage="o Cpf é obrigatório"/>
+                    <p:message for="txtCpf"/>
+
+                    <h:outputText value="Codigo"/>
+                    <p:password id="txtCodigo" value="#{builderAluno.codigo}" required="true"
+                                requiredMessage="O codigo é obrigatorio"/>
+                    <p:message for="txtCodigo"/>
+
+                </p:panelGrid>
+                <p:commandButton value="Cadastrar" oncomplete="PF('painel').show()"/>
+            </p:fieldset>
+
+            <p:dialog id="diall" resizable="false" modal="true" widgetVar="painel" header="Atenção">
+                <h:outputText value="Você tem certeza que quer cadastrar  ?"/>
+                <f:facet name="footer">
+                    <p:commandButton value="cadastrar" update="CadastroAlunoform" action="#{alunoController.insert(builderAluno.criarAluno())}"/>
+
+
+                    <p:commandButton value="não" onclick="PF('painel').hide()"/>
+                </f:facet>
+            </p:dialog>
+
+        </h:form>
+
+    </h:body>
+</html>
+

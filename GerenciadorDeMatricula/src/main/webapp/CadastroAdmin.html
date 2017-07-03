@@ -14,7 +14,7 @@
             <h:form id="formularioCadastroAdmin">
                 <p:messages/>
                 <p:panelGrid columns="3">
-                    <h:outputText value="Nome:"/>
+                    <h:outputText value="Nome:" <p:inputText id="txtNome" value="#{builderAdmin.nome}"/>
                     <p:inputText id="txtNome" value="#{builderAdmin.nome}" required="true"
                                  requiredMessage="O nome é obrigatório"/>
                     <p:message for="txtNome"/>
@@ -36,7 +36,7 @@
 
                 </p:panelGrid>
 
-                <p:commandButton value="cadastrar" update=":formularioCadastroAdmin" action="#{adminController.insert(builderAdmin.criarAdmin(),confirmacao)}"/>
+                <p:commandButton value="cadastrar" update="formularioCadastroAdmin" action="#{adminController.insert(builderAdmin.criarAdmin(),confirmacao)}"/>
             </h:form>
     </h:body>
 </p:panel>
